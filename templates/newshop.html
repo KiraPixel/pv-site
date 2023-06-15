@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Мой магазин
+{% endblock %}
+
+{% block body %}
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Купить магазин</h5>
+    <p class="card-text">Прежде, чем продавать свои товары на нашей площадке, оплатите доступ</p>
+    <p class="card-text">Стоимость: 10 <img src="https://media.discordapp.net/attachments/1098027082031828992/1117710890360385547/3F3F3F_JE3_BE3.webp" alt="currency" width="25" height="25" class="float-right"></p>
+    <form action="/my_shop" method="POST">
+      <div class="form-group">
+        <label for="newShopName" class="text-muted">Название магазина</label>
+        <input type="text" class="form-control" id="newShopName" name="newShopName" minlength="2" maxlength="16" required>
+      </div>
+      <div class="text-center mt-3">
+        <input type="hidden" name="access-token" value="{{ AccessToken }}">
+        <button type="submit" class="btn btn-primary btn-lg">Оплатить</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

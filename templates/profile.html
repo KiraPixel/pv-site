@@ -1,0 +1,102 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Профиль
+{% endblock %}
+
+{% block body %}
+<body>
+    <div class="container mt-4">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="card-title">{{user_db.minecraft_nick}} - {{user}}</h1>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p class="card-text text-muted">ID: {{user_db.id}}      Дата регистрации: {{user_db.date_registration}}</p>
+                </div>
+            </div>
+          </div>
+        </div>
+<br><br>
+<div class="mt-4">
+    <h3>Покупки</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Товар</th>
+                <th scope="col">Дата покупки</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Магазин</th>
+                <th scope="col">Статус</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+        <br><br>
+
+<div class="mt-4">
+    <div class="card shadow">
+        <div class="card-body">
+            <h5 class="card-title">Операции</h5>
+            <div class="overflow-auto" style="max-height: 500px;">
+                <div class="card-deck">
+                    {% if user_transactions %}
+                        {% for transaction in user_transactions|reverse %}
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h5 class="card-subtitle mb-2">{{ transaction.user }}</h5>
+                                            <p class="card-text text-muted small">{{ transaction.type }}</p>
+                                        </div>
+                                        <div style="text-align: right;">
+                                                <span style="display: inline-block; vertical-align: middle;">{{ transaction.money }}</span>
+                                            <img src="https://media.discordapp.net/attachments/1098027082031828992/1117710890360385547/3F3F3F_JE3_BE3.webp" alt="Diamond Image" width="25" height="25" style="display: inline-block; vertical-align: middle;">
+                                            </h6>
+                                            <p class="card-text text-muted small">{{ transaction.date_transaction }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% if not loop.last %}
+                                 <div style="margin-bottom: 10px;"></div> <!-- Разделительный отступ -->
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-text">Вы еще не совершили транзакций.</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <br><br>
+    </div>
+</body>
+</html>
+
+
+{% endblock %}
+

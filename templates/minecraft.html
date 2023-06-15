@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Подтвердить майнкрафт
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2 mt-5">
+      <h3 class="mb-4">Регистрация</h3>
+      <div class="alert alert-info">
+        <p>Следуйте этим шагам для регистрации:</p>
+        <ol>
+          <li>Зайдите на наш сервер Minecraft по адресу <input type="text" class="form-control" id="serverAddress" value="192.168.2.5" readonly></li>
+          <li>Введите команду <input type="text" class="form-control" id="registrationCommand" value="/pvland registration" readonly></li>
+          <li>Получите код регистрации и вставьте его в поле ниже</li>
+        </ol>
+      </div>
+      <form action="/minecraft" method="POST">
+        <div class="form-group">
+          <label for="registrationCode">Код регистрации</label>
+          <input type="number" class="form-control" id="registrationCode" name="registrationCode" min="100000" max="999999" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

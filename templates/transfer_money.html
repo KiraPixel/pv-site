@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Перевод денег
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card shadow">
+        <div class="card-body">
+          <h1 class="card-title">{{ user_db.minecraft_nick }}</h1>
+          <p class="text-muted">Ваши алмазы: {{ user_db.money }}</p>
+          <form action="" method="POST">
+            <div class="form-group">
+              <label for="minecraft-nick">Майнкрафт ник игрока</label>
+              <input type="text" class="form-control" id="minecraft-nick" name="minecraft-nick" required minlength="4" maxlength="16" pattern="[A-Za-z0-9_]{4,16}">
+              <small class="form-text text-muted">Только латинские символы, цифры и подчеркивания. Максимальное количество символов: 16</small>
+            </div>
+            <div class="form-group">
+              <label for="money-amount">Количество алмазов</label>
+              <input type="number" class="form-control" id="money-amount" name="money-amount" required min="1" max="{{ user_db.money }}">
+              <small class="form-text text-muted">Максимальная сумма которую вы можете перевести: {{user_db.money}} алм.</small>
+            </div>
+            <input type="hidden" name="access-token" value="{{ AccessToken }}">  <!-- Добавленное скрытое поле -->
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg mt-3">Перевести</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

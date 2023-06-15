@@ -1,0 +1,98 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Мой магазин
+{% endblock %}
+
+{% block body %}
+
+<div class="card">
+  <div class="card-header">
+    Магазин
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Название магазина</h5>
+    <p class="card-text">Доходы: $XXX</p>
+  </div>
+    <div class="d-flex justify-content-end">
+      <a href="/shop" class="btn btn-primary">Посмотреть магазин</a>
+    </div>
+</div>
+
+<div class="card mt-4">
+  <div class="card-header">
+    Список товаров
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Название товара</th>
+          <th scope="col">Количество</th>
+          <th scope="col">Цена</th>
+          <th scope="col">Удалить</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="https://media.discordapp.net/attachments/1098027082031828992/1098030370517176360/-1.png" alt="Товар 1" width="25" height="25"> Товар 1</td>
+          <td>1 шт.</td>
+          <td>10 <img src="https://media.discordapp.net/attachments/1098027082031828992/1117710890360385547/3F3F3F_JE3_BE3.webp" alt="Diamond Image" width="20" height="20" style="display: inline-block; vertical-align: middle;"></td>
+          <td><button class="btn btn-danger">Удалить</button></td>
+        </tr>
+        <tr>
+          <td><img src="https://media.discordapp.net/attachments/1098027082031828992/1098030370517176360/-1.png" alt="Товар 1" width="25" height="25"> Товар 1</td>
+          <td>1 шт.</td>
+          <td>10 <img src="https://media.discordapp.net/attachments/1098027082031828992/1117710890360385547/3F3F3F_JE3_BE3.webp" alt="Diamond Image" width="20" height="20" style="display: inline-block; vertical-align: middle;"></td>
+          <td><button class="btn btn-danger">Удалить</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card mt-4">
+  <div class="card-header">
+    Добавить новый товар
+  </div>
+  <div class="card-body">
+    <form class="form-inline" method="POST" action="/my_shop">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <input type="text" class="form-control" name="form1" placeholder="Название товара" required>
+              <div class="invalid-feedback">Название товара должно содержать от 1 до 20 символов.</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <input type="text" class="form-control" name="form2" placeholder="URL Ссылка на картинку" required>
+              <div class="invalid-feedback">Введите корректный URL.</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <input type="number" class="form-control" name="form3" placeholder="Количество" required min="1" max="64">
+              <div class="invalid-feedback">Количество должно быть от 1 до 64.</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <input type="number" class="form-control" name="form4" placeholder="Цена" required min="1">
+              <div class="invalid-feedback">Цена должна быть больше 0.</div>
+            </div>
+          </div>
+          <div class="col">
+            <input type="hidden" name="access-token" value="{{ AccessToken }}">
+            <button type="submit" class="btn btn-primary">Добавить</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock %}
